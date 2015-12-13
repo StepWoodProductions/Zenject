@@ -10,6 +10,10 @@ using ModestTree.Util;
 
 #if !ZEN_NOT_UNITY3D
 using UnityEngine;
+
+#if UNITY_5_3
+using UnityEngine.SceneManagement;
+#endif
 #endif
 
 namespace Zenject
@@ -77,7 +81,7 @@ namespace Zenject
 
 #if UNITY_5_3
             Log.Debug("Starting to load scene '{0}'", levelName);
-			SceneManager.LoadScene(levelName, isAdditive);
+			SceneManager.LoadScene(levelName, isAdditive ? LoadSceneMode.Additive : LoadSceneMode.Single);
             Log.Debug("Finished loading scene '{0}'", levelName);
 #else
 			if (isAdditive)
@@ -102,12 +106,12 @@ namespace Zenject
             var rootObjectsBeforeLoad = UnityUtil.GetRootGameObjects();
 
 #if UNITY_5_3
-			SceneManager.LoadScene(levelName, true);
+			SceneManager.LoadScene(levelName, LoadSceneMode.Additive);
 #else
 			Application.LoadLevelAdditive(levelName);
 #endif
 
-            // Wait one frame for objects to be added to the scene heirarchy
+            // Wait one frame for objects to be added to the scene hierarchy
             yield return null;
 
             var rootObjectsAfterLoad = UnityUtil.GetRootGameObjects();
