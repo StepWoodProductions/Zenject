@@ -11,7 +11,7 @@
     <AssemblyName>Zenject</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -59,13 +60,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine" Condition="'$(Configuration)'=='Debug'">
-      <HintPath>..\..\..\..\..\AssemblyBuild\Libraries\Unity\UnityEngine.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine" Condition="'$(Configuration)'=='Release'">
       <HintPath>..\..\..\..\..\AssemblyBuild\Libraries\Unity\UnityEngine.dll</HintPath>
     </Reference>
@@ -103,6 +97,7 @@
     <Compile Include="Factories\KeyedFactory.cs" />
     <Compile Include="Factories\ListFactory.cs" />
     <Compile Include="Factories\PrefabFactory.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Injection\InjectableInfo.cs" />
     <Compile Include="Injection\TypeAnalyzer.cs" />
     <Compile Include="Injection\ZenjectTypeInfo.cs" />
